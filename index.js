@@ -1,5 +1,5 @@
 import { Drug, Pharmacy } from "./pharmacy.js";
-import fs from "fs";
+import { writeFile } from "node:fs/promises";
 
 const drugs = [
   new Drug("Doliprane", 20, 30),
@@ -17,14 +17,5 @@ for (let elapsedDays = 0; elapsedDays < 30; elapsedDays++) {
   log.push(JSON.parse(JSON.stringify(pharmacy.updateBenefitValue())));
 }
 
-fs.writeFile(
-  "output.json",
-  JSON.stringify({ result: log }, null, 2).concat("\n"),
-  (err) => {
-    if (err) {
-      console.log("error");
-    } else {
-      console.log("success");
-    }
-  }
-);
+await writeFile("output.json", JSON.stringify({ result: log }, null, 2) + "\n");
+console.log("success");
