@@ -1,4 +1,4 @@
-import { Drug, Pharmacy } from "./pharmacy";
+import { Drug, Pharmacy } from "./pharmacy.js";
 import fs from "fs";
 
 const drugs = [
